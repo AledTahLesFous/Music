@@ -7,31 +7,28 @@ export function SongCard({ song }) {
     : song.thumbnail || "/placeholder.png";
 
   return (
-    <div className="flex items-center p-2 bg-gray-800 rounded hover:bg-gray-700 transition-colors">
+    <div className="flex flex-col sm:flex-row items-center p-2 bg-gray-800 rounded hover:bg-gray-700 transition-colors gap-2">
       {/* Thumbnail */}
       <img
         src={thumbnail}
         alt={song.title}
-        className="w-20 h-20 object-cover rounded mr-4 flex-shrink-0"
-        onError={(e) => { e.currentTarget.src = "/placeholder.png"; }}
+        className="w-full sm:w-20 h-20 object-cover rounded flex-shrink-0"
+        onError={(e) => {
+          e.currentTarget.src = "/placeholder.png";
+        }}
       />
 
-      {/* Titre */}
-      <div className="flex-1 text-center">
-        <h2 className="font-semibold truncate" title={song.title}>
-          {song.title}
-        </h2>
-      </div>
+      {/* Infos */}
+      <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between flex-1 w-full gap-2">
+        <div className="flex-1 text-center sm:text-left">
+          <h2 className="font-semibold truncate" title={song.title}>
+            {song.title}
+          </h2>
+        </div>
 
-            {/* Artiste */}
-      <div className="w-32 text-right text-sm opacity-70 mr-4 truncate">
-        {song.artist}
-      </div>
+        <div className="text-sm opacity-70 truncate sm:ml-4">{song.artist}</div>
 
-
-      {/* Genre */}
-      <div className="w-24 text-right text-sm opacity-70 mr-4">
-        {song.genre}
+        <div className="text-sm opacity-70 truncate sm:ml-4">{song.genre}</div>
       </div>
     </div>
   );
