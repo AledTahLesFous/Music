@@ -26,7 +26,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-4 sm:p-8">
+    <div className="min-h-screen bg-gray-900 text-white p-4 sm:p-8 overflow-x-hidden">
       <h1 className="text-2xl sm:text-3xl font-bold mb-4 text-center sm:text-left">
         Ma Bibliothèque Musicale
       </h1>
