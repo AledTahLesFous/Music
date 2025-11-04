@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { songs } from "./data/songs";
+import { songs as originalSongs } from "./data/songs";
 import { SongCard } from "./components/SongCard";
 import { SearchBar } from "./components/SearchBar";
 import { getYoutubeId } from "./utils/youtube";
@@ -9,11 +9,13 @@ export default function App() {
   const [activeSongId, setActiveSongId] = useState(null);
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [songList, setSongList] = useState(originalSongs);
+
 
   // Récupère les genres uniques
-  const genres = Array.from(new Set(songs.map((s) => s.genre))).sort();
+  const genres = Array.from(new Set(originalSongs.map((s) => s.genre))).sort();
 
-  const filtered = songs.filter((s) => {
+    const filtered = songList.filter((s) => {
     const matchesTitle = s.title.toLowerCase().includes(search.toLowerCase());
     const matchesGenre =
       selectedGenres.length === 0 || selectedGenres.includes(s.genre);
@@ -30,6 +32,18 @@ export default function App() {
       <h1 className="text-2xl sm:text-3xl font-bold mb-4 text-center sm:text-left">
         Ma Bibliothèque Musicale
       </h1>
+
+      {/* Shuffle button */}
+<button
+  onClick={() => {
+    const shuffled = [...songList].sort(() => Math.random() - 0.5);
+    setSongList(shuffled);
+  }}
+  className="bg-blue-900 hover:bg-purple-500 px-4 py-2 rounded mb-4"
+>
+  🔀 Random Shuffle
+</button>
+
 
       {/* Search + Genre */}
       <div className="flex flex-col sm:flex-row gap-4 mb-4">

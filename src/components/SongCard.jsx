@@ -4,7 +4,7 @@ export function SongCard({ song }) {
   const id = getYoutubeId(song.url);
   const thumbnail = id
     ? `https://img.youtube.com/vi/${id}/hqdefault.jpg`
-    : song.thumbnail || "/placeholder.png";
+    : song.thumbnail;
 
   return (
     <div className="flex flex-col sm:flex-row items-center p-2 bg-gray-800 rounded hover:bg-gray-700 transition-colors gap-2">
