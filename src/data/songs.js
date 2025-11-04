@@ -126,4 +126,4 @@ export const songs = [
 { title: "ABBA - The Winner Takes It All", genre: "Pop", url: "https://www.youtube.com/watch?v=92cwKCU8Z5c", artist: "ABBA" },
 { title: "Salut à toi", genre: "Rock", url: "https://www.youtube.com/watch?v=qcCuFLbWznY", artist: "Bérurier Noir" },
 { title: "", genre: "", url: "", artist: "" },
-];rl
+];
